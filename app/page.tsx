@@ -46,14 +46,14 @@ export default function Home() {
 
     if (isLoading) {
         return (
-            <div className="flex items-center justify-center min-h-screen">
-                <div className="text-xl">Loading...</div>
+            <div className="flex items-center justify-center min-h-screen bg-gray-100">
+                <div className="text-xl text-gray-900">Loading...</div>
             </div>
         );
     }
 
     return (
-        <main className="w-full h-screen">
+        <main className="w-full h-screen bg-white">
             {!user ? (
                 <LoginForm onLoginSuccess={handleLoginSuccess} />
             ) : (

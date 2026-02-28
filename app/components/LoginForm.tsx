@@ -129,7 +129,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg w-96">
-                <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
+                <h2 className="text-2xl font-bold text-center mb-6 text-gray-900">Login</h2>
 
                 {error && (
                     <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
@@ -152,7 +152,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
                         placeholder="Email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full mb-3 px-4 py-2 border border-gray-300 rounded"
+                        className="w-full mb-3 px-4 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500"
                         required
                     />
                     <input
@@ -160,7 +160,7 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
                         placeholder="Password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full mb-4 px-4 py-2 border border-gray-300 rounded"
+                        className="w-full mb-4 px-4 py-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500"
                         required
                     />
                     <button

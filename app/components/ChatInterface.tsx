@@ -206,7 +206,7 @@ export default function ChatInterface({ user, onLogout }: ChatInterfaceProps) {
                 {/* Header */}
                 <div className="bg-gray-100 border-b p-4 flex justify-between items-center">
                     <div>
-                        <p className="font-semibold">Chat with {user?.email}</p>
+                        <p className="font-semibold text-gray-900">Chat with {user?.email}</p>
                     </div>
                     <button
                         onClick={handleLogout}
