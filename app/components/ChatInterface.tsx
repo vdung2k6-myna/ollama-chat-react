@@ -66,7 +66,7 @@ export default function ChatInterface({ user, onLogout }: ChatInterfaceProps) {
             // Display user message
             if (userPaneRef.current) {
                 const userDiv = document.createElement('div');
-                userDiv.className = 'mb-4 p-3 bg-blue-100 rounded';
+                userDiv.className = 'mb-4 p-3 bg-blue-100 text-gray-900 rounded';
                 userDiv.textContent = newMessage.content;
                 userPaneRef.current.appendChild(userDiv);
             }
@@ -94,7 +94,7 @@ export default function ChatInterface({ user, onLogout }: ChatInterfaceProps) {
 
             if (botPaneRef.current) {
                 const botDiv = document.createElement('div');
-                botDiv.className = 'mb-4 p-3 bg-gray-100 rounded';
+                botDiv.className = 'mb-4 p-3 bg-gray-100 text-gray-900 rounded';
                 botDiv.id = 'current-bot-message';
                 botPaneRef.current.appendChild(botDiv);
 
@@ -158,18 +158,28 @@ export default function ChatInterface({ user, onLogout }: ChatInterfaceProps) {
     };
 
     return (
-        <div className="flex h-screen bg-white">
+        <div className="flex h-screen bg-white overflow-hidden">
+            {/* Settings Toggle Button */}
+            <button
+                onClick={() => setShowSettings(!showSettings)}
+                className="fixed left-0 top-1/2 -translate-y-1/2 px-2 py-4 bg-gray-200 hover:bg-gray-300 z-50 rounded-r transition-all duration-300"
+                style={{ marginLeft: showSettings ? '16rem' : '0' }}
+                title={showSettings ? 'Collapse settings' : 'Expand settings'}
+            >
+                {showSettings ? '◀' : '▶'}
+            </button>
+
             {/* Settings Pane */}
-            <div className={`transition-all duration-300 bg-gray-50 border-r ${showSettings ? 'w-64' : 'w-0 overflow-hidden'}`}>
-                <div className="p-4">
+            <div className={`transition-all duration-300 bg-gray-50 border-r flex-shrink-0 overflow-hidden ${showSettings ? 'w-64' : 'w-0'}`}>
+                <div className={`p-4 min-w-64 ${showSettings ? 'opacity-100' : 'opacity-0'}`}>
                     <h3 className="font-bold mb-4">Settings</h3>
                     
                     <div className="mb-4">
-                        <label className="block font-semibold mb-2">Model</label>
+                        <label className="block font-semibold mb-2 text-gray-900">Model</label>
                         <select
                             value={selectedModel}
                             onChange={(e) => setSelectedModel(e.target.value)}
-                            className="w-full p-2 border border-gray-300 rounded"
+                            className="w-full p-2 border border-gray-300 rounded text-gray-900"
                         >
                             {models.map((model) => (
                                 <option key={model} value={model}>
@@ -180,24 +190,16 @@ export default function ChatInterface({ user, onLogout }: ChatInterfaceProps) {
                     </div>
 
                     <div>
-                        <label className="block font-semibold mb-2">System Message</label>
+                        <label className="block font-semibold mb-2 text-gray-900">System Message</label>
                         <textarea
                             value={systemMessage}
                             onChange={(e) => setSystemMessage(e.target.value)}
                             placeholder="Enter system message to guide the AI behavior..."
-                            className="w-full p-2 border border-gray-300 rounded h-32"
+                            className="w-full p-2 border border-gray-300 rounded h-32 text-gray-900 placeholder-gray-500"
                         />
                     </div>
                 </div>
             </div>
-
-            {/* Settings Toggle Button */}
-            <button
-                onClick={() => setShowSettings(!showSettings)}
-                className="fixed left-0 top-1/2 transform -translate-y-1/2 px-2 py-4 bg-gray-200 hover:bg-gray-300 z-10"
-            >
-                {showSettings ? '>' : '<'}
-            </button>
 
             {/* Main Chat Area */}
             <div className="flex-1 flex flex-col">
@@ -246,7 +248,7 @@ export default function ChatInterface({ user, onLogout }: ChatInterfaceProps) {
                         }}
                         placeholder="Type your message..."
                         disabled={isLoading}
-                        className="flex-1 p-2 border border-gray-300 rounded"
+                        className="flex-1 p-2 border border-gray-300 rounded text-gray-900 placeholder-gray-500"
                     />
                     <button
                         onClick={handleSendMessage}
