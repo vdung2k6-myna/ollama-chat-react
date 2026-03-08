@@ -1,0 +1,28 @@
+schema: spec-driven
+
+# Project context (optional)
+# This is shown to AI when creating artifacts.
+# Add your tech stack, conventions, style guides, domain knowledge, etc.
+context: |
+  Tech stack: Next.js 16, React 19, TypeScript, Tailwind CSS
+  Database: Supabase (PostgreSQL)
+  Authentication: Supabase Auth with PKCE flow
+  State management: React hooks (useState, useEffect)
+  Styling: Tailwind CSS with Geist fonts
+  API: Next.js App Router with server actions
+  Features: Chat interface with Ollama models, user authentication, session management
+  Code style: React Compiler enabled, ESLint configured
+  Project structure: App Router pattern with components in app/ directory
+
+# Per-artifact rules (optional)
+# Add custom rules for specific artifacts.
+rules:
+  proposal:
+    - Keep proposals under 500 words
+    - Always include a "Non-goals" section
+    - Focus on user authentication and chat functionality
+  tasks:
+    - Break tasks into chunks of max 2 hours
+    - Ensure all new features integrate with existing Supabase auth
+    - Maintain responsive design with Tailwind CSS
+    - Follow Next.js App Router conventions
